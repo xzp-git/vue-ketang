@@ -1,22 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from "@/views/home/index.vue";
+import loadable from "@/utils/loadable.js";
 
 Vue.use(VueRouter)
-
+// 自动生成路由 不建议路由自动配置，可配置性较低(批注，钩子)
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/',
+    name:'home',
+    component:Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:'/lesson',
+    name:'lesson',
+    component:loadable(() => import('@/views/lesson/index.vue')) //默认白屏 加载完去渲染
+  },
+  {
+    path:'/profile',
+    name:'profile',
+    component:loadable(() => import('@/views/profile/index.vue'))
   }
 ]
 
