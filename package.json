@@ -26,6 +26,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.28.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",

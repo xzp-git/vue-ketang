@@ -8,6 +8,15 @@
     </van-tabbar>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+      active:0
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 *{
@@ -15,5 +24,13 @@
   padding: 0;
 }
 /*这里我们可以覆盖vant的样式*/
+#app{
+  .van-dropdown-menu__bar{
+    background-color: $background;
+  }
+  .van-dropdown-menu__title{
+    color: $color;
+  }
+}
 
 </style>
