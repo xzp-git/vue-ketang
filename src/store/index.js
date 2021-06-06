@@ -13,7 +13,9 @@ const store = new Vuex.Store({
         [Types.SET_TOKEN](state,token){
             // 我们希望状态可以被追棕
             // state.tokens.push(token)
-            state.tokens = [...state.tokens,token] //存储token 页面切换可以让token一次执行
+           
+           state.tokens = [...state.tokens,token] //存储token 页面切换可以让token一次执行
+        
         },
         [Types.CLEAR_TOKEN](state){
             state.tokens.forEach(token => token()) //执行所有的取消方法，都调用一下

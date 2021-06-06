@@ -15,7 +15,7 @@ class HttpRequest {
 
     }
     setInterceptor(instance, url) {
-        instance.ineterceptors.request.use((config) => {
+        instance.interceptors.request.use((config) => {
            
             // 开启loading
             if(!Object.keys(this.queue).length){
@@ -32,7 +32,7 @@ class HttpRequest {
             return config
         })
 
-        instance.ineterceptors.response.use((res) => {
+        instance.interceptors.response.use((res) => {
             delete this.queue[url] //一旦响应了 就从队列删除
             if(!Object.keys(this.queue).length){
                 // close loading
@@ -40,6 +40,7 @@ class HttpRequest {
             if (res.data.err == 0) {
                 return res.data.data; //可以配合switchCase 状态
             }else{
+                
                 return Promise.reject(res.data) //失败抛出异常即可
             }
         
