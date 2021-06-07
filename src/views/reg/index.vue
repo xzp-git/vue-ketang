@@ -6,7 +6,12 @@
 </template>
 
 <script>
+import * as Types from '@/store/actions-types'
 import FormSubmit from "@/components/form-submit";
+import { createNamespacedHelpers } from "vuex";
+let {
+  mapActions,
+} = createNamespacedHelpers("user");
 export default {
   components: {
     FormSubmit,
@@ -19,9 +24,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions([Types.SET_LOGIN]),
     onsubmit(value) {
+      this[Types.SET_LOGIN](value)
 
-      console.log(value);
     },
   },
 };

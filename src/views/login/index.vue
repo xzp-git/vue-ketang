@@ -1,13 +1,17 @@
 <template>
   <div>
-    <van-nav-bar title="登录" left-arrow @click-left="$router.back()">
-    </van-nav-bar>
+    <van-nav-bar title="登录" left-arrow @click-left="$router.back()"> </van-nav-bar>
     <form-submit @submit="onsubmit"></form-submit>
   </div>
 </template>
 
 <script>
+import * as Types from '@/store/actions-types'
 import FormSubmit from "@/components/form-submit";
+import { createNamespacedHelpers } from "vuex";
+let {
+  mapActions,
+} = createNamespacedHelpers("user");
 export default {
   components: {
     FormSubmit,
@@ -20,8 +24,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions([Types.SET_LOGIN]),
     onsubmit(value) {
-      console.log(value);
+      this[Types.SET_LOGIN](value)
+
     },
   },
 };
