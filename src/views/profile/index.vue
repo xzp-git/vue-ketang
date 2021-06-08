@@ -12,6 +12,15 @@
         <span>{{$store.state.user.username}}</span>
       </template>
     </div>
+
+    <template  v-if="$store.state.user.menuPermission">
+       <van-tabs type="card">
+          <van-tab :title="item.name" v-for="item in  $store.state.user.authList" :to="item.path" :key="item.path"></van-tab>
+        </van-tabs>
+    </template>
+   <router-view></router-view> 
+   <van-button v-has='"edit"'>编辑</van-button>
+   <van-button v-has='"remove"'>删除</van-button>
   </div>
 </template>
 

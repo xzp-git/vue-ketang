@@ -26,3 +26,6 @@ export const SET_PERMISSION = 'SET_PERMISSION' // 更改权限的mutation
 
 export const VALIDATE = 'VALIDATE' //校验权限 会调用一个action
 
+export const ADD_ROUTE = 'ADD_ROUTE' //动态的添加路由
+
+export const SET_MENU_PERMISSION = 'SET_MENU_PERMISSION'

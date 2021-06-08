@@ -1,6 +1,7 @@
 import store from "../store"
 import * as Types from '@/store/actions-types'
 
+
 export default{
     // 此字段只是给自己看的没有任何实际意义
     'clear_token': async (to, from, next) => {
@@ -43,5 +44,23 @@ export default{
             }
         }
     
+    },
+    'menu-permission': async (to , from, next) => {
+        // 这里对权限经行处理 动态的添加路由
+        if (store.state.user.hasPermission){ //如果用户登录，才能去拿菜单的权限
+            if (!store.state.user.menuPermission){ //没菜单权限 才需要处理
+                await store.dispatch(`user/${Types.ADD_ROUTE}`)
+                //路由动态加载 此时 组件是异步加载 、 我希望等待组件加载完毕 后跳转过去
+                next({
+                    ...to,
+                    replace:true
+                })
+            }else{
+                next()
+            }
+        }else{
+            next()
+        }
+
     }
 }
