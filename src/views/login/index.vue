@@ -9,6 +9,7 @@
 import * as Types from '@/store/actions-types'
 import FormSubmit from "@/components/form-submit";
 import { createNamespacedHelpers } from "vuex";
+import { Dialog } from "vant";
 let {
   mapActions,
 } = createNamespacedHelpers("user");
@@ -25,8 +26,16 @@ export default {
   },
   methods: {
     ...mapActions([Types.SET_LOGIN]),
-    onsubmit(value) {
-      this[Types.SET_LOGIN](value)
+    async onsubmit(value) {
+      try {
+       await  this[Types.SET_LOGIN](value)
+       this.$router.push('/profile')
+      } catch (e) {
+        Dialog.alert({
+          title:'登录失败',
+          message:e.data
+        })
+      }
 
     },
   },

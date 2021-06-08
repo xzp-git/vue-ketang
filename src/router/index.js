@@ -14,7 +14,10 @@ const routes = [
   {
     path:'/lesson',
     name:'lesson',
-    component:loadable(() => import('@/views/lesson/index.vue')) //默认白屏 加载完去渲染
+    component:loadable(() => import('@/views/lesson/index.vue')), //默认白屏 加载完去渲染
+    meta:{
+      needLogin:true
+    }
   },
   {
     path:'/profile',
@@ -24,7 +27,9 @@ const routes = [
   {
     path:'/login',
     name:'login',
-    component:loadable(() => import('@/views/login/index.vue'))
+    component:loadable(() => import('@/views/login/index.vue')),
+
+  
   },
   {
     path:'/reg',
